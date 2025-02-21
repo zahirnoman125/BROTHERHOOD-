@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brotherhood Store</title>
+    <style>
+        body {
+            background: url('https://i.postimg.cc/jjwyNxZf/DALL-E-2025-02-21-21-53-22-A-modern-and-unique-logo-design-for-Brotherhood-Store-The-logo-shoul.webp') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            position: relative;
+        }
+        .header {
+            font-size: 32px;
+            font-weight: bold;
+            text-transform: uppercase;
+            color: rgb(255, 0, 0);
+            text-shadow: 2px 2px 10px rgb(0, 255, 0);
+            border-bottom: 2px solid white;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+        .product {
+            margin: 20px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 10px;
+            display: inline-block;
+            text-align: center;
+        }
+        img {
+            width: 250px;
+            height: auto;
+            border-radius: 10px;
+        }
+        .order-btn {
+            background: blue;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .order-btn:hover {
+            background: darkblue;
+        }
+        .footer {
+            margin-top: 50px;
+            padding: 20px;
+            background: black;
+        }
+        .rgb-corners::before, .rgb-corners::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: red;
+            box-shadow: 0 0 10px red;
+        }
+        .rgb-corners::before {
+            top: 0; left: 0;
+        }
+        .rgb-corners::after {
+            bottom: 0; right: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="header rgb-corners">Brotherhood Store</div>
+
+    <div class="product">
+        <img src="https://i.postimg.cc/Z53TyX6R/DALL-E-2025-02-21-22-03-19-A-stylish-wristwatch.webp" alt="Luxury Watch">
+        <h2>Chain Watch</h2>
+        <button class="order-btn" onclick="showOrderForm('Chain Watch')">Order Now</button>
+    </div>
+
+    <div class="product">
+        <img src="https://i.postimg.cc/g2vxPxSN/9dc2ed10-9185-4921-9a75-09b2eae80d1b.jpg" alt="Classic Watch">
+        <h2>Classic Silver Watch</h2>
+        <button class="order-btn" onclick="showOrderForm('Classic Silver Watch')">Order Now</button>
+    </div>
+
+    <div id="orderForm" style="display: none;">
+        <h2>Order Now</h2>
+        <form onsubmit="submitOrder(event)">
+            <input type="text" id="name" placeholder="Your Name" required><br>
+            <input type="text" id="address" placeholder="Your Address" required><br>
+            <input type="text" id="phone" placeholder="Phone Number" required><br>
+            <input type="text" id="homeNumber" placeholder="Home Number" required><br>
+            <input type="text" id="location" placeholder="Your Location" required><br>
+            <button type="submit">Submit Order</button>
+        </form>
+    </div>
+
+    <div class="footer">
+        <p>Contact: 0370 8401223 | Email: pp4096703@gmail.com</p>
+        <p>About Brotherhood Store: We provide high-quality luxury watches at the best prices. Our watches are designed for elegance, durability, and premium performance.</p>
+    </div>
+
+    <script>
+        function showOrderForm(product) {
+            document.getElementById('orderForm').style.display = 'block';
+            document.getElementById('orderForm').setAttribute('data-product', product);
+        }
+
+        function submitOrder(event) {
+            event.preventDefault();
+            let product = document.getElementById('orderForm').getAttribute('data-product');
+            let name = document.getElementById('name').value;
+            let address = document.getElementById('address').value;
+            let phone = document.getElementById('phone').value;
+            let homeNumber = document.getElementById('homeNumber').value;
+            let location = document.getElementById('location').value;
+            
+            let mailtoLink = `mailto:pp4096703@gmail.com?subject=New Order&body=
+            Product: ${product}%0D%0A
+            Name: ${name}%0D%0A
+            Address: ${address}%0D%0A
+            Phone: ${phone}%0D%0A
+            Home Number: ${homeNumber}%0D%0A
+            Location: ${location}`;
+            
+            window.location.href = mailtoLink;
+        }
+    </script>
+</body>
+</html>
